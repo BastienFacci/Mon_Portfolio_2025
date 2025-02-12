@@ -22,25 +22,30 @@ section.projects {
   overflow-x: auto;
   position: relative;
 }
+
 .project_informations {
   list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1em;
-  padding-left: 15%;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-left: 3%;
+  justify-content: center;
 }
 
 #projects_title {
   transform: rotate(-90deg);
   transform-origin: left top;
-  margin-top: 7em;
+  margin-top: 8em;
   text-transform: uppercase;
   color: #113f59;
   font-size: xxx-large;
-  margin-left: 0.5em;
   font-family: "YesevaOne", cursive;
   position: fixed;
   z-index: 1000;
+  left: 60px;
 }
 
 h2.project_title {
@@ -56,14 +61,16 @@ li.project_card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 328px;
-  height: 632px; /* Hauteur fixe pour éviter que le texte influence la position */
+  justify-content: right;
+  width: 460px;
+  height: 700px;
   border-radius: 18px;
   border: 3px solid #113f59;
   background: #dadbdd;
   padding: 1.5em;
   margin-bottom: 1em;
-  position: relative; /* Permet de positionner les boutons par rapport à la carte */
+  position: relative;
+  scroll-snap-align: start;
 }
 
 .project_card a {
@@ -83,7 +90,7 @@ img.project_picture {
 div.card_informations {
   font-family: "Roboto", sans-serif;
   padding-top: 1em;
-  flex-grow: 1; /* Permet d'occuper l'espace restant */
+  flex-grow: 1;
   overflow: hidden;
 }
 
@@ -100,11 +107,11 @@ div.action_buttons {
   display: flex;
   gap: 1em;
   justify-content: center;
-  position: absolute; /* Fixe la position */
-  bottom: 1.5em; /* Place toujours les boutons à la même hauteur */
+  position: absolute;
+  bottom: 1.5em;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%; /* Ajuste la largeur */
+  width: 80%;
 }
 
 button.action_button {
@@ -134,6 +141,7 @@ img#add_project {
 
 button#add_button {
   border: none;
+  background: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -147,6 +155,8 @@ button#add_button {
     margin-top: 1.2em;
     margin-bottom: 1em;
     position: relative;
+    left: 0;
+    z-index: 0;
   }
 
   section.projects {

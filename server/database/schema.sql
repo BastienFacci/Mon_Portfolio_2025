@@ -12,7 +12,7 @@ CREATE TABLE project (
   year YEAR NOT NULL, 
   description TEXT, 
   technologies VARCHAR(255), 
-  user_id INT UNSIGNED NOT NULL, 
+  user_id INT UNSIGNED NULL, 
   FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 

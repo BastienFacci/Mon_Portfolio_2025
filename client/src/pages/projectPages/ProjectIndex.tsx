@@ -28,6 +28,7 @@ function ProjectIndex() {
   return (
     <section className="projects">
       <h1 id="projects_title">Projets</h1>
+
       <section className="projects_card_container">
         <ul className="project_informations">
           {projects.map((project) => (

@@ -38,23 +38,26 @@ const read: RequestHandler = async (req, res, next) => {
 };
 
 // // The A of BREAD - Add (Create) operation
-// const add: RequestHandler = async (req, res, next) => {
-//   try {
-//     // Extract the item data from the request body
-//     const newItem = {
-//       title: req.body.title,
-//       user_id: req.body.user_id,
-//     };
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    // Extract the project data from the request body
+    const newProject = {
+      title: req.body.title,
+      year: req.body.year,
+      technologies: req.body.technologies,
+      description: req.body.description,
+      user_id: req.body.user_id ?? null,
+    };
 
-//     // Create the item
-//     const insertId = await itemRepository.create(newItem);
+    // Create the project
+    const insertId = await projectRepository.create(newProject);
 
-//     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-//     res.status(201).json({ insertId });
-//   } catch (err) {
-//     // Pass any errors to the error-handling middleware
-//     next(err);
-//   }
-// };
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted project
+    res.status(201).json({ insertId });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
-export default { browse, read };
+export default { browse, read, add };

@@ -11,7 +11,7 @@ type ProjectType = {
 interface NextProjectType {
   children?: ReactNode; // contenu optionnel pour le bouton dynamique
   defaultValue: ProjectType; // valeurs par défaut du formulaire
-  onSubmit: (project: FormData) => void; // fonction appelée lors de la soumission d'un projet
+  onSubmit: (project: Record<string, string>) => void; // fonction appelée lors de la soumission d'un projet
 }
 
 function NextProjectForm({
@@ -19,9 +19,9 @@ function NextProjectForm({
   defaultValue,
   onSubmit,
 }: NextProjectType) {
-  // obtention de la date actuelle au format aaaa-mm-dd
+  // Obtention de la date actuelle au format aaaa-mm-dd
   const today = new Date().toISOString().split("T")[0];
-  const formattedDate = new Date().toLocaleDateString("fr-FR"); // Format de la date au format DD-MM-YYYY
+  const formattedDate = new Date().toLocaleDateString("fr-FR"); // Format DD-MM-YYYY
 
   return (
     <section className="post-project-container">
@@ -33,37 +33,47 @@ function NextProjectForm({
           const formData = new FormData(event.currentTarget);
           formData.append("date", today);
           formData.append("dateoftheday", formattedDate); // Ajouter la date formatée
-          onSubmit(formData);
+
+          // Convertir FormData en objet JSON
+          const projectData: Record<string, string> = {};
+          formData.forEach((value, key) => {
+            projectData[key] = value.toString();
+          });
+
+          onSubmit(projectData);
         }}
       >
-        <label htmlFor="title">TITRE DU PROJET</label>
+        <label htmlFor="title">Titre</label>
         <input
           className="form-project-fields"
           placeholder="TITRE DU PROJET"
           type="text"
           name="title"
           defaultValue={defaultValue.title}
+          required
         />
 
-        <label htmlFor="year">ANNÉE DE CRÉATION</label>
+        <label htmlFor="year">Année</label>
         <input
           className="form-project-fields"
           placeholder="ANNÉE"
           type="text"
           name="year"
           defaultValue={defaultValue.year}
+          required
         />
 
-        <label htmlFor="technologies">TECHNOLOGIES UTILISÉES</label>
+        <label htmlFor="technologies">Technologies</label>
         <input
           className="form-project-fields"
           placeholder="TECHNOLOGIES"
           type="text"
           name="technologies"
           defaultValue={defaultValue.technologies}
+          required
         />
 
-        <label htmlFor="description">DESCRIPTION DU PROJET</label>
+        <label htmlFor="description">Description</label>
         <textarea
           className="form-project-fields"
           rows={5}
@@ -71,14 +81,11 @@ function NextProjectForm({
           placeholder="DESCRIPTION"
           name="description"
           defaultValue={defaultValue.description}
+          required
         />
 
-        <p className="auth-gcu">
-          <span className="star">*</span> En soumettant ce projet, vous acceptez
-          que celui-ci soit publié sur le site.
-        </p>
         <button className="post-project-button" type="submit">
-          {children}SOUMETTRE LE PROJET
+          {children}Envoyer
         </button>
       </form>
     </section>

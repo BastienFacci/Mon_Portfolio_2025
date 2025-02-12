@@ -18,16 +18,22 @@ function ProjectNew() {
         defaultValue={newProject}
         onSubmit={(projectData) => {
           fetch(`${import.meta.env.VITE_API_URL}/api/projects`, {
-            method: "post",
+            method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(projectData),
           })
-            .then((response) => response.json())
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Erreur lors de l'ajout du projet");
+              }
+              return response.json();
+            })
             .then((data) => {
               navigate(`/projects/${data.insertId}`);
-            });
+            })
+            .catch((error) => console.error("Erreur :", error));
         }}
       >
         Ajouter

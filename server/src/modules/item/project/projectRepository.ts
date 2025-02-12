@@ -14,16 +14,22 @@ type Project = {
 class ProjectRepository {
   // The C of CRUD - Create operation
 
-  //   async create(item: Omit<Item, "id">) {
-  //     // Execute the SQL INSERT query to add a new item to the "item" table
-  //     const [result] = await databaseClient.query<Result>(
-  //       "insert into item (title, user_id) values (?, ?)",
-  //       [item.title, item.user_id],
-  //     );
+  async create(project: Omit<Project, "id">) {
+    // Execute the SQL INSERT query to add a new project to the "project" table
+    const [result] = await databaseClient.query<Result>(
+      "insert into project (title, year, description, technologies, user_id) values (?, ?, ?, ?, ?)",
+      [
+        project.title,
+        project.year,
+        project.description,
+        project.technologies,
+        project.user_id,
+      ],
+    );
 
-  //     // Return the ID of the newly inserted item
-  //     return result.insertId;
-  //   }
+    // Return the ID of the newly inserted item
+    return result.insertId;
+  }
 
   // The Rs of CRUD - Read operations
 
