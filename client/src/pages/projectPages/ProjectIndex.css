@@ -1,15 +1,130 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/roboto.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Bold";
+  src: url("../assets/fonts/roboto_bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "YesevaOne";
+  src: url("../assets/fonts/YesevaOne-Regular.ttf") format("truetype");
+}
+
+section.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.project_informations {
+  list-style: none;
+}
 #projects_title {
-  transform: rotate(-90deg); /* Rotation de 90° */
+  transform: rotate(-90deg);
   transform-origin: left top;
   margin-top: 7em;
   text-transform: uppercase;
   color: #113f59;
   font-size: xxx-large;
   margin-left: 1em;
+  font-family: "YesevaOne", cursive;
 }
 
-.project_card {
-  border: blue solid 2px;
+h2.project_title {
+  color: #113f59;
+  font-family: "YesevaOne", cursive;
+  text-transform: uppercase;
+  font-size: 1.4em;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+li.project_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 367px;
+  height: 650px; /* Hauteur fixe pour éviter que le texte influence la position */
+  border-radius: 18px;
+  border: 3px solid #113f59;
+  background: #dadbdd;
+  padding: 1.5em;
+  margin-bottom: 1em;
+  position: relative; /* Permet de positionner les boutons par rapport à la carte */
+}
+
+.project_card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project_card a:visited {
+  color: inherit;
+}
+
+img.project_picture {
+  width: 100%;
+  border-radius: 2%;
+}
+
+div.card_informations {
+  font-family: "Roboto", sans-serif;
+  padding-top: 1em;
+  flex-grow: 1; /* Permet d'occuper l'espace restant */
+  overflow: hidden;
+}
+
+.item_bold {
+  font-family: "Roboto Bold", sans-serif;
+  color: #34788f;
+}
+
+p.card_item {
+  padding-bottom: 1em;
+}
+
+div.action_buttons {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  position: absolute; /* Fixe la position */
+  bottom: 1.5em; /* Place toujours les boutons à la même hauteur */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; /* Ajuste la largeur */
+}
+
+button.action_button {
+  font-family: "Roboto Bold", sans-serif;
+  text-transform: uppercase;
+  color: #113f59;
+  width: 124px;
+  height: 34px;
+  border-radius: 8px;
+  border: 2px solid #113f59;
+  background: #dbc788;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
+}
+
+button.action_button:hover {
+  color: #dbc788;
+  background: #113f59;
+  border: 2px solid #dbc788;
+}
+
+button#add_button {
+  border: none;
+
+  border-radius: 90%;
+}
+
+img#add_project {
+  width: 12%;
+  margin-top: 1em;
+  margin-bottom: 1.5em;
 }
 
 @media screen and (max-width: 768px) {
@@ -20,5 +135,7 @@
     margin-left: 0;
     font-size: 2em;
     text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 }

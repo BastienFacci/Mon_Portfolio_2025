@@ -88,7 +88,7 @@ button#more_infos:hover {
 
   div.portrait_description {
     display: flex;
-    padding-top: 12%;
+    padding-top: 10%;
     text-align: left;
     align-items: center;
     margin-left: 2em;
@@ -101,8 +101,8 @@ button#more_infos:hover {
 
   button#more_infos {
     position: absolute;
-    bottom: 30px; /* Ajuste selon l’espace souhaité */
-    left: 50%;
+    bottom: 19em; /* Ajuste selon l’espace souhaité */
+    left: 63%;
     transform: translateX(-50%);
   }
 }
