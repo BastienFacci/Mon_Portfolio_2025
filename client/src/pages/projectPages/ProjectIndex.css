@@ -12,15 +12,25 @@
   font-family: "YesevaOne";
   src: url("../assets/fonts/YesevaOne-Regular.ttf") format("truetype");
 }
-
+button#add_button {
+  display: none;
+}
 section.projects {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-left: 2em;
+  padding-top: 10%;
+  overflow-x: auto;
 }
 .project_informations {
   list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1em;
+  padding-left: 15%;
 }
+
 #projects_title {
   transform: rotate(-90deg);
   transform-origin: left top;
@@ -28,8 +38,10 @@ section.projects {
   text-transform: uppercase;
   color: #113f59;
   font-size: xxx-large;
-  margin-left: 1em;
+  margin-left: 0.5em;
   font-family: "YesevaOne", cursive;
+  position: fixed;
+  z-index: 1000;
 }
 
 h2.project_title {
@@ -45,8 +57,8 @@ li.project_card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 367px;
-  height: 650px; /* Hauteur fixe pour éviter que le texte influence la position */
+  width: 328px;
+  height: 632px; /* Hauteur fixe pour éviter que le texte influence la position */
   border-radius: 18px;
   border: 3px solid #113f59;
   background: #dadbdd;
@@ -115,12 +127,6 @@ button.action_button:hover {
   border: 2px solid #dbc788;
 }
 
-button#add_button {
-  border: none;
-
-  border-radius: 90%;
-}
-
 img#add_project {
   width: 12%;
   margin-top: 1em;
@@ -135,7 +141,37 @@ img#add_project {
     margin-left: 0;
     font-size: 2em;
     text-align: center;
-    margin-top: 1em;
+    margin-top: 1.2em;
     margin-bottom: 1em;
+    position: relative;
+  }
+
+  section.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    padding-top: 22%;
+  }
+
+  h1#project_title {
+    padding-bottom: 1em;
+  }
+
+  button#add_button {
+    border: none;
+
+    border-radius: 90%;
+  }
+
+  .project_informations {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  li.project_card {
+    width: 367px;
+    height: 650px;
   }
 }

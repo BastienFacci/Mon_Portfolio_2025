@@ -35,5 +35,6 @@ VALUES
 INSERT INTO project (title, year, description, technologies, user_id) 
 VALUES 
   ("LABS Society", 2024, "Trombinoscope d’une société fictive, conçu avec un design sobre et épuré pour faciliter la visualisation des équipes et des collaborateurs.", "HTML, CSS, Javascript", 1),
-("Rotten Totomatoes", 2024, "Application web de référencement de séries américaines, inspirée de sites comme Rotten Tomatoes et Allociné. Elle permet de découvrir, évaluer et consulter des informations détaillées sur diverses séries.", "React, TypeScript, Node.js,  Express, Vite.js, JavaScript, HTML, CSS ", 1);
- 
+("Rotten Totomatoes", 2024, "Application web de référencement de séries américaines, inspirée de sites comme Rotten Tomatoes et Allociné. Elle permet de découvrir, évaluer et consulter des informations détaillées sur diverses séries.", "React, TypeScript, Node.js,  Express, Vite.js, JavaScript, HTML, CSS ", 1),
+ ("Périlove aventures", 2024, "Application créée lors d’un hackathon sur le thème du voyage. Nous avons imaginé un concept original mêlant tourisme dans le Périgord et site de rencontre, le tout avec un design rétro inspiré des années 2000.", "React, TypeScript, Node.js,  Express, Vite.js, JavaScript, HTML, CSS ", 1),
+ ("Charentaise 2000", 2025, "Site e-commerce de revente de charentaises top qualité.", "React, TypeScript, Node.js,  Express, Vite.js, JavaScript, HTML, CSS ", 1);

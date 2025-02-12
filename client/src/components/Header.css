@@ -26,11 +26,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 18px;
-  position: relative;
   width: -webkit-fill-available;
   padding-right: 5%;
   padding-left: 3%;
   border-bottom: solid 5px #dbc788;
+  position: fixed;
+  z-index: 1000;
 }
 
 #logo_name {
