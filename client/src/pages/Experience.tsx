@@ -1,10 +1,13 @@
 import "./Experience.css";
+import Construction from "../assets/images/under_contruction.jpg";
 
 function Experience() {
   return (
-    <>
-      <h1>Je suis la page Experience</h1>
-    </>
+    <section className="experience_container">
+      <img src={Construction} alt="construction" className="construction" />
+
+      <h1 id="under_construction">⚠️ Page en construction ⚠️</h1>
+    </section>
   );
 }
 

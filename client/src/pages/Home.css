@@ -1,0 +1,108 @@
+/* --- Police de caractères --- */
+@font-face {
+  font-family: "YesevaOne";
+  src: url("../assets/fonts/YesevaOne-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/roboto.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Bold";
+  src: url("../assets/fonts/roboto_bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Italic";
+  src: url("../assets/fonts/roboto_italic.ttf") format("truetype");
+}
+
+h1#my_name {
+  font-family: "YesevaOne", cursive;
+  text-transform: uppercase;
+  color: #113f59;
+}
+
+h2#my_fonction {
+  font-family: "Roboto", sans-serif;
+  color: #34788f;
+  font-size: 1.3em;
+  padding-bottom: 5%;
+}
+
+img#portrait {
+  width: 70%;
+  padding-top: 7%;
+  padding-bottom: 3%;
+}
+
+section.home_container {
+  text-align: center;
+}
+
+div.presentation {
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 10%;
+}
+
+.description_bold {
+  font-family: "Roboto Bold", sans-serif;
+  color: #34788f;
+}
+
+button#more_infos {
+  font-family: "Roboto Bold", sans-serif;
+  text-transform: uppercase;
+  color: #dbc788;
+  width: 124px;
+  height: 34px;
+  border-radius: 8px;
+  border: 2px solid #dbc788;
+  background: #113f59;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
+}
+
+button#more_infos:hover {
+  color: #113f59;
+  background: #dbc788;
+  border: 2px solid #113f59;
+}
+
+@media (min-width: 768px) {
+  img#portrait {
+    width: 40%;
+    padding: 0;
+    margin-right: 2em;
+  }
+
+  div.description_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.portrait_description {
+    display: flex;
+    padding-top: 12%;
+    text-align: left;
+    align-items: center;
+    margin-left: 2em;
+    margin-right: 6em;
+  }
+
+  div.presentation {
+    padding: 0;
+  }
+
+  button#more_infos {
+    position: absolute;
+    bottom: 30px; /* Ajuste selon l’espace souhaité */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

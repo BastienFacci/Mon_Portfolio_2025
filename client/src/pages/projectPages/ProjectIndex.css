@@ -1,0 +1,24 @@
+#projects_title {
+  transform: rotate(-90deg); /* Rotation de 90° */
+  transform-origin: left top;
+  margin-top: 7em;
+  text-transform: uppercase;
+  color: #113f59;
+  font-size: xxx-large;
+  margin-left: 1em;
+}
+
+.project_card {
+  border: blue solid 2px;
+}
+
+@media screen and (max-width: 768px) {
+  #projects_title {
+    transform: rotate(0deg);
+    transform-origin: initial;
+    margin-top: 0;
+    margin-left: 0;
+    font-size: 2em;
+    text-align: center;
+  }
+}
