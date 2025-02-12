@@ -12,9 +12,7 @@
   font-family: "YesevaOne";
   src: url("../assets/fonts/YesevaOne-Regular.ttf") format("truetype");
 }
-button#add_button {
-  display: none;
-}
+
 section.projects {
   display: flex;
   flex-direction: row;
@@ -22,6 +20,7 @@ section.projects {
   padding-left: 2em;
   padding-top: 10%;
   overflow-x: auto;
+  position: relative;
 }
 .project_informations {
   list-style: none;
@@ -133,6 +132,10 @@ img#add_project {
   margin-bottom: 1.5em;
 }
 
+button#add_button {
+  border: none;
+}
+
 @media screen and (max-width: 768px) {
   #projects_title {
     transform: rotate(0deg);
@@ -156,12 +159,6 @@ img#add_project {
 
   h1#project_title {
     padding-bottom: 1em;
-  }
-
-  button#add_button {
-    border: none;
-
-    border-radius: 90%;
   }
 
   .project_informations {
