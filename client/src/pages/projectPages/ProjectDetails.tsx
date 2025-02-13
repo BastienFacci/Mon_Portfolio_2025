@@ -1,7 +1,7 @@
-// import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import "./ProjectDetails.css";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ProjectDelete from "./ProjectDelete"; // Import du composant
+import "./ProjectDetails.css";
 import Project_Picture from "../../assets/images/generic_project_image.jpg";
 
 type Project = {
@@ -50,8 +50,11 @@ function ProjectDetails() {
       <p>
         <strong>Description :</strong> {project.description}
       </p>
-      <button type="button">Modifier</button>
-      <button type="button">Supprimer</button>
+
+      {/* Utilisation de ProjectDelete */}
+      <ProjectDelete id={project.id} title={project.title}>
+        Supprimer
+      </ProjectDelete>
     </section>
   );
 }

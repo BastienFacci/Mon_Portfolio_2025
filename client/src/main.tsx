@@ -53,7 +53,8 @@ const router = createBrowserRouter([
       },
       {
         path: "delete_project",
-        element: <ProjectDelete />,
+        // biome-ignore lint/correctness/noChildrenProp: <explanation>
+        element: <ProjectDelete id={0} title={""} children={undefined} />,
       },
       {
         path: "edit_project",

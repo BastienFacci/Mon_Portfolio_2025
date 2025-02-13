@@ -60,4 +60,19 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add };
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    // Delete a specific project based on the provided ID
+    const projectId = Number(req.params.id);
+
+    await projectRepository.delete(projectId);
+
+    // Respond with HTTP 204 (No Content) anyway
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+export default { browse, read, add, destroy };

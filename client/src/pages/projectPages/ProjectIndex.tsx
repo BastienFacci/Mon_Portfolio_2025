@@ -25,6 +25,26 @@ function ProjectIndex() {
       });
   }, []);
 
+  // Fonction pour retirer le projet supprimé de la liste
+  const handleDelete = (id: number, title: string) => {
+    const isConfirmed = window.confirm(
+      `Êtes-vous sûr de vouloir supprimer le projet "${title}" ?`,
+    );
+
+    if (isConfirmed) {
+      fetch(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
+        method: "delete",
+      }).then((response) => {
+        if (response.status === 204) {
+          // Retirer le projet de la liste après suppression
+          setProjects((prevProjects) =>
+            prevProjects.filter((project) => project.id !== id),
+          );
+        }
+      });
+    }
+  };
+
   return (
     <section className="projects">
       <h1 id="projects_title">Projets</h1>
@@ -60,10 +80,12 @@ function ProjectIndex() {
                 </div>
               </Link>
               <div className="action_buttons">
-                <button type="button" className="action_button">
-                  Modifier
-                </button>
-                <button type="button" className="action_button">
+                {/* Utilisation de ProjectDelete avec gestion de suppression */}
+                <button
+                  type="button"
+                  className="action_button"
+                  onClick={() => handleDelete(project.id, project.title)}
+                >
                   Supprimer
                 </button>
               </div>

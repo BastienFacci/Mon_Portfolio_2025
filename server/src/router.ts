@@ -12,6 +12,7 @@ import projectActions from "./modules/item/project/projectActions";
 router.get("/api/projects", projectActions.browse);
 router.get("/api/projects/:id", projectActions.read);
 router.post("/api/projects", projectActions.add);
+router.delete("/api/projects/:id", projectActions.destroy);
 /* ************************************************************************* */
 
 export default router;
