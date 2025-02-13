@@ -187,4 +187,8 @@
   .menu_burger {
     display: none;
   }
+
+  .nav li:hover {
+    transform: scale(1.1);
+  }
 }

@@ -38,35 +38,37 @@ function ProjectDetails() {
           <img src={Back} alt="Retour en arrière" id="back_icon" />
         </button>
       </Link>
+      <section className="details-card">
+        <h1 className="details_title">{project.title}</h1>
+        <img
+          src={
+            project.image
+              ? `${import.meta.env.VITE_API_URL}${project.image}`
+              : Project_Picture
+          }
+          alt="Project_Picture"
+          className="generic-img"
+        />
+        <div className="details_items">
+          <p className="item_details_p">
+            <strong className="item_details_bold">Année :</strong>{" "}
+            {project.year}
+          </p>
+          <p className="item_details_p">
+            <strong className="item_details_bold">Technologies :</strong>{" "}
+            {project.technologies}
+          </p>
+          <p className="item_details_p">
+            <strong className="item_details_bold">Description :</strong>{" "}
+            {project.description}
+          </p>
+        </div>
 
-      <h1 className="details_title">{project.title}</h1>
-      <img
-        src={
-          project.image
-            ? `${import.meta.env.VITE_API_URL}${project.image}`
-            : Project_Picture
-        }
-        alt="Project_Picture"
-        className="generic-img"
-      />
-      <div className="details_items">
-        <p className="item_details_p">
-          <strong className="item_details_bold">Année :</strong> {project.year}
-        </p>
-        <p className="item_details_p">
-          <strong className="item_details_bold">Technologies :</strong>{" "}
-          {project.technologies}
-        </p>
-        <p className="item_details_p">
-          <strong className="item_details_bold">Description :</strong>{" "}
-          {project.description}
-        </p>
-      </div>
-
-      {/* Utilisation de ProjectDelete */}
-      <ProjectDelete id={project.id} title={project.title}>
-        Supprimer
-      </ProjectDelete>
+        {/* Utilisation de ProjectDelete */}
+        <ProjectDelete id={project.id} title={project.title}>
+          Supprimer
+        </ProjectDelete>
+      </section>
     </section>
   );
 }
