@@ -31,7 +31,7 @@ function ProjectNew() {
               return response.json();
             })
             .then((data) => {
-              navigate(`/projects/${data.insertId}`);
+              navigate(`/project/${data.insertId}`);
             })
             .catch((error) => console.error("Erreur :", error));
         }}
