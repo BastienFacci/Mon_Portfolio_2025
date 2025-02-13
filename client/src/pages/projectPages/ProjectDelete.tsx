@@ -32,7 +32,9 @@ function ProjectDelete({ id, title, children }: ProjectDeleteProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <button type="submit">{children}</button>
+      <button type="submit" className="delete_button">
+        {children}
+      </button>
     </form>
   );
 }

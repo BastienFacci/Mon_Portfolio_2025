@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProjectDelete from "./ProjectDelete"; // Import du composant
 import "./ProjectDetails.css";
 import Project_Picture from "../../assets/images/generic_project_image.jpg";
+import Back from "../../assets/images/icons/icon_back.png";
 
 type Project = {
   id: number;
@@ -32,7 +33,13 @@ function ProjectDetails() {
 
   return (
     <section className="project_details">
-      <h1>{project.title}</h1>
+      <Link to="/project">
+        <button type="button" id="back_button">
+          <img src={Back} alt="Retour en arrière" id="back_icon" />
+        </button>
+      </Link>
+
+      <h1 className="details_title">{project.title}</h1>
       <img
         src={
           project.image
@@ -40,16 +47,21 @@ function ProjectDetails() {
             : Project_Picture
         }
         alt="Project_Picture"
+        className="generic-img"
       />
-      <p>
-        <strong>Année :</strong> {project.year}
-      </p>
-      <p>
-        <strong>Technologies :</strong> {project.technologies}
-      </p>
-      <p>
-        <strong>Description :</strong> {project.description}
-      </p>
+      <div className="details_items">
+        <p className="item_details_p">
+          <strong className="item_details_bold">Année :</strong> {project.year}
+        </p>
+        <p className="item_details_p">
+          <strong className="item_details_bold">Technologies :</strong>{" "}
+          {project.technologies}
+        </p>
+        <p className="item_details_p">
+          <strong className="item_details_bold">Description :</strong>{" "}
+          {project.description}
+        </p>
+      </div>
 
       {/* Utilisation de ProjectDelete */}
       <ProjectDelete id={project.id} title={project.title}>

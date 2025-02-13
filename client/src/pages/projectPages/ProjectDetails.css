@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "Roboto Bold";
+  src: url("../assets/fonts/roboto_bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/roboto.ttf") format("truetype");
+}
+img#back_icon {
+  width: 8%;
+}
+
+button#back_button {
+  background: transparent;
+  border: none;
+  text-align: left;
+  margin-left: 0;
+}
+
+h1.details_title {
+  color: #113f59;
+  padding-bottom: 1.5em;
+  text-transform: uppercase;
+}
+.project_details {
+  padding-top: 9em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  text-align: center;
+}
+
+img.generic-img {
+  width: 100%;
+}
+
+div.details_items {
+  text-align: left;
+}
+
+strong.item_details_bold {
+  font-family: "Roboto Bold", sans-serif;
+  color: #34788f;
+  margin-bottom: 1em;
+}
+
+p.item_details_p {
+  font-family: "Roboto", sans-serif;
+  padding-top: 10px;
+}
+
+button.delete_button {
+  font-family: "Roboto Bold", sans-serif;
+  margin-top: 2em;
+  text-transform: uppercase;
+  color: #113f59;
+  width: 124px;
+  height: 34px;
+  border-radius: 8px;
+  border: 2px solid #113f59;
+  background: #dbc788;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
+}
+
+button.delete_button:hover {
+  color: #dddddd;
+  background: #b81e06;
+  border: 2px solid #dddddd;
+}

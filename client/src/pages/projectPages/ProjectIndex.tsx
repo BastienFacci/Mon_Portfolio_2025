@@ -81,10 +81,6 @@ function ProjectIndex() {
                     <strong className="item_bold">Technologies :</strong>{" "}
                     {project.technologies}
                   </p>
-                  <p className="card_item">
-                    <strong className="item_bold">Description :</strong>{" "}
-                    {project.description}
-                  </p>
                 </div>
               </Link>
               <div className="action_buttons">
