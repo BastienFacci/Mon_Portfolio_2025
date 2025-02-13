@@ -1,5 +1,8 @@
 import type { ReactNode } from "react";
+import Back from "../assets/images/icons/icon_back.png";
+import Triceratops from "../assets/images/triceratops.png";
 import "./NewProjectForm.css";
+import { Link } from "react-router-dom";
 
 type ProjectType = {
   title: string;
@@ -25,6 +28,11 @@ function NextProjectForm({
 
   return (
     <section className="post-project-container">
+      <Link to="/project">
+        <button type="button" id="back_button">
+          <img src={Back} alt="Retour en arrière" id="back_icon" />
+        </button>
+      </Link>
       <h1 id="subm_project">AJOUTER UN PROJET</h1>
       <form
         className="form-project"
@@ -46,7 +54,7 @@ function NextProjectForm({
         <label htmlFor="title">Titre</label>
         <input
           className="form-project-fields"
-          placeholder="TITRE DU PROJET"
+          placeholder="Titre"
           type="text"
           name="title"
           defaultValue={defaultValue.title}
@@ -56,7 +64,7 @@ function NextProjectForm({
         <label htmlFor="year">Année</label>
         <input
           className="form-project-fields"
-          placeholder="ANNÉE"
+          placeholder="Année"
           type="text"
           name="year"
           defaultValue={defaultValue.year}
@@ -66,7 +74,7 @@ function NextProjectForm({
         <label htmlFor="technologies">Technologies</label>
         <input
           className="form-project-fields"
-          placeholder="TECHNOLOGIES"
+          placeholder="Technologies"
           type="text"
           name="technologies"
           defaultValue={defaultValue.technologies}
@@ -78,15 +86,20 @@ function NextProjectForm({
           className="form-project-fields"
           rows={5}
           cols={50}
-          placeholder="DESCRIPTION"
+          placeholder="Description"
           name="description"
           defaultValue={defaultValue.description}
           required
         />
 
-        <button className="post-project-button" type="submit">
-          {children}Envoyer
-        </button>
+        <div className="post_project_div">
+          <button className="post-project-button" type="submit">
+            {children}
+          </button>
+        </div>
+        <div className="triceratops-div">
+          <img src={Triceratops} alt="Triceratops" id="triceratops" />
+        </div>
       </form>
     </section>
   );
