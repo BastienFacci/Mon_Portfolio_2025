@@ -50,6 +50,10 @@ div.presentation {
   padding-bottom: 10%;
 }
 
+div.portrait_description {
+  padding-top: 15%;
+}
+
 .description_bold {
   font-family: "Roboto Bold", sans-serif;
   color: #34788f;
@@ -66,6 +70,8 @@ button#more_infos {
   background: #113f59;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease-in-out;
+  margin-left: 33%;
+  margin-top: 25px;
 }
 
 button#more_infos:hover {
@@ -88,7 +94,7 @@ button#more_infos:hover {
 
   div.portrait_description {
     display: flex;
-    padding-top: 10%;
+    padding-top: 15%;
     text-align: left;
     align-items: center;
     margin-left: 2em;
@@ -97,12 +103,5 @@ button#more_infos:hover {
 
   div.presentation {
     padding: 0;
-  }
-
-  button#more_infos {
-    position: absolute;
-    bottom: 19em; /* Ajuste selon l’espace souhaité */
-    left: 63%;
-    transform: translateX(-50%);
   }
 }
