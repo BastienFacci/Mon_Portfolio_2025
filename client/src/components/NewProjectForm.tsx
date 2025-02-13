@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Back from "../assets/images/icons/icon_back.png";
 import Triceratops from "../assets/images/triceratops.png";
 import "./NewProjectForm.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type ProjectType = {
   title: string;
@@ -22,9 +22,29 @@ function NextProjectForm({
   defaultValue,
   onSubmit,
 }: NextProjectType) {
-  // Obtention de la date actuelle au format aaaa-mm-dd
   const today = new Date().toISOString().split("T")[0];
-  const formattedDate = new Date().toLocaleDateString("fr-FR"); // Format DD-MM-YYYY
+  const formattedDate = new Date().toLocaleDateString("fr-FR");
+  const navigate = useNavigate(); // Hook de navigation
+
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Empêche le rechargement de la page lors de la soumission
+    const formData = new FormData(event.currentTarget);
+    formData.append("date", today);
+    formData.append("dateoftheday", formattedDate);
+
+    const projectData: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      projectData[key] = value.toString();
+    });
+
+    onSubmit(projectData);
+
+    // Afficher un prompt pour confirmer l'ajout du projet
+    alert(`Le projet "${projectData.title}" a été rajouté avec succès !`);
+
+    // Rediriger vers la page de l'index des projets
+    navigate("/project");
+  };
 
   return (
     <section className="post-project-container">
@@ -34,23 +54,8 @@ function NextProjectForm({
         </button>
       </Link>
       <h1 id="subm_project">AJOUTER UN PROJET</h1>
-      <form
-        className="form-project"
-        onSubmit={(event) => {
-          event.preventDefault(); // empêche le rechargement de la page lors de la soumission
-          const formData = new FormData(event.currentTarget);
-          formData.append("date", today);
-          formData.append("dateoftheday", formattedDate); // Ajouter la date formatée
 
-          // Convertir FormData en objet JSON
-          const projectData: Record<string, string> = {};
-          formData.forEach((value, key) => {
-            projectData[key] = value.toString();
-          });
-
-          onSubmit(projectData);
-        }}
-      >
+      <form className="form-project" onSubmit={handleFormSubmit}>
         <label htmlFor="title">Titre</label>
         <input
           className="form-project-fields"
@@ -97,10 +102,10 @@ function NextProjectForm({
             {children}
           </button>
         </div>
-        <div className="triceratops-div">
-          <img src={Triceratops} alt="Triceratops" id="triceratops" />
-        </div>
       </form>
+      <div className="triceratops-div">
+        <img src={Triceratops} alt="Triceratops" id="triceratops" />
+      </div>
     </section>
   );
 }
