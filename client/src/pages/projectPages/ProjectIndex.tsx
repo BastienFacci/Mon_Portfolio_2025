@@ -47,7 +47,15 @@ function ProjectIndex() {
 
   return (
     <section className="projects">
-      <h1 id="projects_title">Projets</h1>
+      <div className="project-title-button">
+        <h1 id="projects_title">Projets</h1>
+        <Link to="/add_project">
+          <button type="button" id="add_button">
+            <img src={Add} alt="Ajouter un projet" id="add_project" />
+            <span className="add-button-text">Ajouter un nouveau projet</span>
+          </button>
+        </Link>
+      </div>
 
       <section className="projects_card_container">
         <ul className="project_informations">
@@ -93,12 +101,6 @@ function ProjectIndex() {
           ))}
         </ul>
       </section>
-
-      <Link to="/add_project">
-        <button type="button" id="add_button">
-          <img src={Add} alt="add_project" id="add_project" />
-        </button>
-      </Link>
     </section>
   );
 }
