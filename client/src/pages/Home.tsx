@@ -27,11 +27,13 @@ function Home() {
               et contribuer à des projets innovants alliant performance et
               design.
             </p>
-            <Link to="/experience">
-              <button type="button" id="more_infos">
-                + d'infos
-              </button>
-            </Link>
+            <div className="moreinfos_div">
+              <Link to="/experience">
+                <button type="button" id="more_infos">
+                  + d'infos
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

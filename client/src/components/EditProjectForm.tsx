@@ -11,14 +11,12 @@ type Project = {
   image?: string;
 };
 
-// Interface définissant les props du formulaire de modification d'utilisateur
 interface ProjectFormProps {
   children: ReactNode;
-  defaultValue: Project; // valeurs initiales des champs du formulaire (prerémpli)
+  defaultValue: Project;
   onSubmit: (project: Project) => void;
 }
 
-// fonction du composant permettant la modification du profil
 function EditProjectForm({
   children,
   defaultValue,
@@ -30,17 +28,22 @@ function EditProjectForm({
       <form
         className="edit_form"
         onSubmit={(event) => {
-          event.preventDefault(); // empechement de rechargement de la page
-          const formData = new FormData(event.currentTarget); // récuperation des donnés du formulaire
-          onSubmit({
-            // envoie les donn"es au composant parent
+          event.preventDefault();
+          const formData = new FormData(event.currentTarget);
+
+          const updatedProject = {
             title: formData.get("title") as string,
-            year: formData.get("year") as unknown as number,
+            year: Number(formData.get("year")),
             technologies: formData.get("technologies") as string,
             description: formData.get("description") as string,
-            id: 0,
-            user_id: 0,
-          });
+            id: defaultValue.id,
+            user_id: defaultValue.user_id,
+          };
+
+          onSubmit(updatedProject);
+          window.alert(
+            `Votre projet "${updatedProject.title}" a bien été modifié.`,
+          );
         }}
       >
         <label className="updateForm-fields">
@@ -56,7 +59,7 @@ function EditProjectForm({
         <label className="updateForm-fields">
           Année
           <input
-            type="text"
+            type="number"
             name="year"
             defaultValue={defaultValue.year}
             required
@@ -94,4 +97,5 @@ function EditProjectForm({
     </section>
   );
 }
+
 export default EditProjectForm;

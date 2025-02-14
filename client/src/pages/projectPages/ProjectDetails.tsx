@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import ProjectDelete from "./ProjectDelete"; // Import du composant
+import ProjectDelete from "./ProjectDelete";
 import "./ProjectDetails.css";
 import Project_Picture from "../../assets/images/generic_project_image.jpg";
 import Back from "../../assets/images/icons/icon_back.png";
@@ -16,7 +16,7 @@ type Project = {
 };
 
 function ProjectDetails() {
-  const { id } = useParams<{ id: string }>(); // Récupère l'ID depuis l'URL
+  const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState<Project | null>(null);
 
   useEffect(() => {
@@ -63,11 +63,17 @@ function ProjectDetails() {
             {project.description}
           </p>
         </div>
+        <div className="buttons_duo">
+          <ProjectDelete id={project.id} title={project.title}>
+            Supprimer
+          </ProjectDelete>
 
-        {/* Utilisation de ProjectDelete */}
-        <ProjectDelete id={project.id} title={project.title}>
-          Supprimer
-        </ProjectDelete>
+          <Link to={`/edit_project/${project.id}`}>
+            <button type="button" className="edit-project-button">
+              Modifier
+            </button>
+          </Link>
+        </div>
       </section>
     </section>
   );
