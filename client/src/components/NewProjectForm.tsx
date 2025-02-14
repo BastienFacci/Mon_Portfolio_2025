@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { toast } from "react-toastify";
 import Back from "../assets/images/icons/icon_back.png";
 import Triceratops from "../assets/images/triceratops.png";
 import "./NewProjectForm.css";
@@ -39,11 +40,23 @@ function NextProjectForm({
 
     onSubmit(projectData);
 
-    // Afficher un prompt pour confirmer l'ajout du projet
-    alert(`Le projet "${projectData.title}" a été rajouté avec succès !`);
+    toast.success(
+      `Le projet "${projectData.title}" a été rajouté avec succès !`,
+      {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      },
+    );
 
-    // Rediriger vers la page de l'index des projets
-    navigate("/project");
+    // Rediriger après un court délai pour que la notification soit visible
+    setTimeout(() => {
+      navigate("/project");
+    }, 2000);
   };
 
   return (

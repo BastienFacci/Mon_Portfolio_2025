@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { toast } from "react-toastify";
 import "./EditProjectForm.css";
 
 type Project = {
@@ -41,8 +42,20 @@ function EditProjectForm({
           };
 
           onSubmit(updatedProject);
-          window.alert(
+
+          // Affichage de la notification Toastify
+          toast.success(
             `Votre projet "${updatedProject.title}" a bien été modifié.`,
+            {
+              position: "bottom-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            },
           );
         }}
       >
