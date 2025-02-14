@@ -36,6 +36,32 @@ const read: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    // Update a specific category based on the provided ID
+    const project = {
+      id: Number(req.params.id),
+      title: req.body.title,
+      year: req.body.year,
+      technologies: req.body.technologies,
+      description: req.body.description,
+      user_id: req.body.user_id ?? null,
+    };
+
+    const affectedRows = await projectRepository.update(project);
+
+    // If the category is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the category in JSON format
+    if (affectedRows === 0) {
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(204);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // // The A of BREAD - Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
@@ -75,4 +101,4 @@ const destroy: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, destroy };
+export default { browse, read, edit, add, destroy };

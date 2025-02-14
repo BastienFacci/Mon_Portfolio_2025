@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Project_Picture from "../../assets/images/generic_project_image.jpg";
 import Add from "../../assets/images/icons/icon_add.png";
 import "./ProjectIndex.css";
@@ -16,6 +16,8 @@ type Project = {
 
 function ProjectIndex() {
   const [projects, setProjects] = useState<Project[]>([]);
+  // Récupération de l'ID de l'utilisateur depuis l'URL (de manière dynamique type profil/:id)
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/projects`)
@@ -91,6 +93,13 @@ function ProjectIndex() {
                   onClick={() => handleDelete(project.id, project.title)}
                 >
                   Supprimer
+                </button>
+                <button
+                  type="button"
+                  className="action_button"
+                  onClick={() => navigate(`/edit_project/${project.id}`)}
+                >
+                  Modifier
                 </button>
               </div>
             </li>

@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         element: <ProjectDelete id={0} title={""} children={undefined} />,
       },
       {
-        path: "edit_project",
+        path: "edit_project/:id",
         element: <ProjectEdit />,
       },
       {
