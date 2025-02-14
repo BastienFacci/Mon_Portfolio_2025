@@ -90,7 +90,7 @@ button.edit-project-button:hover {
 
 div.buttons_duo {
   display: flex;
-  flex-direction: row-reverse;
+
   gap: 1em;
 }
 
