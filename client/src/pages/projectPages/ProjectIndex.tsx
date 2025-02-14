@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Project_Picture from "../../assets/images/generic_project_image.jpg";
 import Add from "../../assets/images/icons/icon_add.png";
+import "react-toastify/dist/ReactToastify.css";
 import "./ProjectIndex.css";
 
 type Project = {
@@ -16,7 +18,6 @@ type Project = {
 
 function ProjectIndex() {
   const [projects, setProjects] = useState<Project[]>([]);
-  // Récupération de l'ID de l'utilisateur depuis l'URL (de manière dynamique type profil/:id)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,22 +30,53 @@ function ProjectIndex() {
 
   // Fonction pour retirer le projet supprimé de la liste
   const handleDelete = (id: number, title: string) => {
-    const isConfirmed = window.confirm(
-      `Êtes-vous sûr de vouloir supprimer le projet "${title}" ?`,
-    );
-
-    if (isConfirmed) {
-      fetch(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
-        method: "delete",
-      }).then((response) => {
-        if (response.status === 204) {
-          // Retirer le projet de la liste après suppression
-          setProjects((prevProjects) =>
-            prevProjects.filter((project) => project.id !== id),
-          );
-        }
-      });
-    }
+    // Affichage de la fenêtre de confirmation avec Toastify
+    toast.info(`Êtes-vous sûr de vouloir supprimer le projet "${title}" ?`, {
+      position: "top-center",
+      autoClose: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      onClick: () => {
+        // Si l'utilisateur confirme, procéder à la suppression du projet
+        fetch(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
+          method: "delete",
+        }).then((response) => {
+          if (response.status === 204) {
+            toast.success(`Le projet "${title}" a bien été supprimé.`, {
+              position: "bottom-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+            // Retirer le projet de la liste après suppression
+            setProjects((prevProjects) =>
+              prevProjects.filter((project) => project.id !== id),
+            );
+          } else {
+            toast.error(
+              `Une erreur est survenue lors de la suppression de "${title}".`,
+              {
+                position: "bottom-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              },
+            );
+          }
+        });
+      },
+    });
   };
 
   return (
@@ -86,7 +118,7 @@ function ProjectIndex() {
                 </div>
               </Link>
               <div className="action_buttons">
-                {/* Utilisation de ProjectDelete avec gestion de suppression */}
+                {/* Bouton de suppression avec gestion du toast */}
                 <button
                   type="button"
                   className="action_button"
