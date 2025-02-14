@@ -1,6 +1,7 @@
 import "./ProjectEdit.css";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Back from "../../assets/images/icons/icon_back.png";
 import EditProjectForm from "../../components/EditProjectForm";
 
 interface EditProjectType {
@@ -33,6 +34,11 @@ function ProjectEdit() {
   return (
     project && (
       <section className="edit_project_container">
+        <Link to="/project">
+          <button type="button" id="back_button">
+            <img src={Back} alt="Retour en arrière" id="back_icon" />
+          </button>
+        </Link>
         <EditProjectForm
           defaultValue={project} // Passage des données actuelles au formulaire
           onSubmit={(projectData) => {

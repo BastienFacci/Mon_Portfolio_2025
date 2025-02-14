@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import "./EditProjectForm.css";
 
 type Project = {
   id: number;
@@ -25,8 +26,9 @@ function EditProjectForm({
 }: ProjectFormProps) {
   return (
     <section className="update-project-container">
-      <h1>Modifier mon projet</h1>
+      <h1 id="edit_project_title">Modifier mon projet</h1>
       <form
+        className="edit_form"
         onSubmit={(event) => {
           event.preventDefault(); // empechement de rechargement de la page
           const formData = new FormData(event.currentTarget); // récuperation des donnés du formulaire
@@ -48,6 +50,7 @@ function EditProjectForm({
             name="title"
             defaultValue={defaultValue.title}
             required
+            className="edit-fields"
           />
         </label>
         <label className="updateForm-fields">
@@ -57,6 +60,7 @@ function EditProjectForm({
             name="year"
             defaultValue={defaultValue.year}
             required
+            className="edit-fields"
           />
         </label>
         <label className="updateForm-fields">
@@ -66,21 +70,26 @@ function EditProjectForm({
             name="technologies"
             defaultValue={defaultValue.technologies}
             required
+            className="edit-fields"
           />
         </label>
         <label className="updateForm-fields">
           Description
-          <input
-            type="text"
+          <textarea
             name="description"
             defaultValue={defaultValue.description}
             required
+            className="edit-fields"
+            rows={5}
+            cols={50}
           />
         </label>
 
-        <button type="submit" className="update-project-button">
-          {children}
-        </button>
+        <div className="edit-button-div">
+          <button type="submit" className="update-project-button">
+            {children}
+          </button>
+        </div>
       </form>
     </section>
   );
