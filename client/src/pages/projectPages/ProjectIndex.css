@@ -31,8 +31,8 @@ section.projects {
 
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding-left: 5em;
-  justify-content: center;
+  padding-left: 15em;
+  justify-content: start;
 }
 
 #projects_title {
@@ -63,8 +63,8 @@ li.project_card {
   flex-direction: column;
   align-items: center;
   justify-content: right;
-  width: 460px;
-  height: 600px;
+  width: 309px;
+  height: 482px;
   border-radius: 18px;
   border: 3px solid #113f59;
   background: #dadbdd;
@@ -74,6 +74,7 @@ li.project_card {
   scroll-snap-align: start;
   transition: transform 0.3s ease-in-out;
 }
+
 li.project_card:hover {
   transform: scale(1.03);
   background-color: #d4e0cc;
@@ -207,8 +208,8 @@ span.add-button-text {
   }
 
   li.project_card {
-    width: 367px;
-    height: 540px;
+    width: 460px;
+    height: 600px;
   }
   .add-button-text {
     font-family: "Roboto bold", sans-serif;

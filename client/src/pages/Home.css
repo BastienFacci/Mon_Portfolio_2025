@@ -34,7 +34,7 @@ h2#my_fonction {
 
 img#portrait {
   width: 70%;
-  padding-top: 15%;
+  padding-top: 10%;
   padding-bottom: 3%;
 }
 
@@ -84,6 +84,7 @@ button#more_infos:hover {
   img#portrait {
     width: 40%;
     padding: 0;
+
     margin-right: 2em;
   }
 
