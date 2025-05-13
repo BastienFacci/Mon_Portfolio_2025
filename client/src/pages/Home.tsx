@@ -10,11 +10,13 @@ function Home() {
 
         <div className="desciption_container">
           <h1 id="my_name">Bastien Faccinetto</h1>
-          <h2 id="my_fonction">Développeur front-end Junior</h2>
+          <h2 id="my_fonction">
+            Développeur front-end Junior | Passioné d'UX/UI
+          </h2>
           <div className="presentation">
             <p>
-              Actuellement en reconversion professionnelle, je me spécialise
-              dans le développement web{" "}
+              Suite à une reconversion professionnelle, je me spécialise dans le
+              développement web{" "}
               <strong className="description_bold">front-end</strong> avec une
               forte appétence pour l’
               <strong className="description_bold">UX/UI design</strong>.

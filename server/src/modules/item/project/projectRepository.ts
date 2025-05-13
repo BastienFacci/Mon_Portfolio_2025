@@ -1,5 +1,4 @@
 import databaseClient from "../../../../database/client";
-
 import type { Result, Rows } from "../../../../database/client";
 
 type Project = {
@@ -8,55 +7,47 @@ type Project = {
   year: number;
   description: string;
   technologies: string;
-  user_id: number;
+  image_url: string | null; // mise à jour de l'ancien user_id
 };
 
 class ProjectRepository {
-  // The C of CRUD - Create operation
-
+  // Partie mise en commentaire car l'ajout de projets n'est plus nécessaire :
+  /*
   async create(project: Omit<Project, "id">) {
-    // Execute the SQL INSERT query to add a new project to the "project" table
     const [result] = await databaseClient.query<Result>(
-      "insert into project (title, year, description, technologies, user_id) values (?, ?, ?, ?, ?)",
+      "insert into project (title, year, description, technologies, image_url) values (?, ?, ?, ?, ?)",
       [
         project.title,
         project.year,
         project.description,
         project.technologies,
-        project.user_id,
+        project.image_url,
       ],
     );
-
-    // Return the ID of the newly inserted item
     return result.insertId;
   }
+  */
 
-  // The Rs of CRUD - Read operations
-
+  // Lecture d'un seul projet
   async read(id: number) {
-    // Exécute la requête SQL pour récupérer un projet spécifique par son ID
     const [rows] = await databaseClient.query<Rows>(
       "SELECT * FROM project WHERE id = ?",
       [id],
     );
-
-    // Retourne le premier projet trouvé, ou null si aucun projet n'est trouvé
     return rows[0] as Project | null;
   }
 
+  // Lecture de tous les projets
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all projects from the "project" table
-    const [rows] = await databaseClient.query<Rows>("select * from project");
-
-    // Return the array of projects
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM project ORDER BY id DESC",
+    );
     return rows as Project[];
   }
 
-  // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing project
-
+  // Partie mise en commentaire car tu ne veux plus modifier :
+  /*
   async update(project: Project) {
-    // Execute the SQL UPDATE query to update an existing category in the "project" table
     const [result] = await databaseClient.query<Result>(
       "update project set title = ?, year = ?, technologies = ?, description = ? where id = ?",
       [
@@ -67,24 +58,20 @@ class ProjectRepository {
         project.id,
       ],
     );
-
-    // Return how many rows were affected
     return result.affectedRows;
   }
+  */
 
-  // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an project by its ID
-
+  // Partie mise en commentaire car tu ne veux plus supprimer :
+  /*
   async delete(id: number) {
-    // Execute the SQL DELETE query to delete an existing category from the "category" table
     const [result] = await databaseClient.query<Result>(
       "delete from project where id = ?",
       [id],
     );
-
-    // Return how many rows were affected
     return result.affectedRows;
   }
+  */
 }
 
 export default new ProjectRepository();
