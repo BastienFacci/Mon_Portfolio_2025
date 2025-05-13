@@ -63,7 +63,8 @@ app.use(express.json());
 import router from "./router";
 
 // Mount the API router under the "/api" endpoint
-app.use(router);
+// app.use(router);
+app.use("/api", router);
 
 /* ************************************************************************* */
 
@@ -121,5 +122,6 @@ const logErrors: ErrorRequestHandler = (err, req, res, next) => {
 app.use(logErrors);
 
 /* ************************************************************************* */
+// Serve the favicon from the server
 
 export default app;

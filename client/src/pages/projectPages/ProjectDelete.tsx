@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import "react-toastify/dist/ReactToastify.css";
 import "./ProjectDelete.css";
 
@@ -16,19 +17,20 @@ function ProjectDelete({ id, title, children }: ProjectDeleteProps) {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    // Affichage de la fenêtre de confirmation avec Toastify
-    toast.info(`Êtes-vous sûr de vouloir supprimer le projet "${title}" ?`, {
-      position: "top-center",
-      autoClose: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      onClick: () => {
-        // Si l'utilisateur confirme, procéder à la suppression du projet
+    // Affichage de la boîte de dialogue SweetAlert2
+    Swal.fire({
+      title: "Êtes-vous sûr ?",
+      text: `Voulez-vous vraiment supprimer le projet "${title}" ?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#113f59",
+      confirmButtonText: "Oui, supprimer",
+      cancelButtonText: "Annuler",
+    }).then((result) => {
+      if (result.isConfirmed) {
         fetch(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
-          method: "delete",
+          method: "DELETE",
         }).then((response) => {
           if (response.status === 204) {
             toast.success(`Le projet "${title}" a bien été supprimé.`, {
@@ -38,7 +40,6 @@ function ProjectDelete({ id, title, children }: ProjectDeleteProps) {
               closeOnClick: true,
               pauseOnHover: true,
               draggable: true,
-              progress: undefined,
               theme: "colored",
             });
             navigate("/project");
@@ -52,13 +53,12 @@ function ProjectDelete({ id, title, children }: ProjectDeleteProps) {
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
-                progress: undefined,
                 theme: "light",
               },
             );
           }
         });
-      },
+      }
     });
   };
 

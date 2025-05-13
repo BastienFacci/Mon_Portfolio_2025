@@ -2,12 +2,27 @@
   font-family: "Roboto Bold";
   src: url("../assets/fonts/roboto_bold.ttf") format("truetype");
 }
+
 @font-face {
   font-family: "Roboto";
   src: url("../assets/fonts/roboto.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "YesevaOne";
+  src: url("../assets/fonts/YesevaOne-Regular.ttf") format("truetype");
+}
+
 img#back_icon {
   width: 8%;
+}
+
+img.project_picture_details {
+  width: 100%; /* Prendre toute la largeur disponible */
+  height: 300px; /* Taille fixe pour toutes les images */
+
+  object-fit: cover; /* Maintient le ratio tout en remplissant l'espace */
+  transition: transform 0.5s ease-in-out; /* Ajout de transition pour l'effet de défilement */
 }
 
 button#back_button {
@@ -22,6 +37,7 @@ h1.details_title {
   padding-bottom: 1.5em;
   text-transform: uppercase;
 }
+
 .project_details {
   padding-top: 9em;
   margin-left: 1.5em;
@@ -29,8 +45,8 @@ h1.details_title {
   text-align: center;
 }
 
-img.generic-img {
-  width: 100%;
+section.details-card {
+  margin-bottom: 10%;
 }
 
 div.details_items {
@@ -62,12 +78,6 @@ button.delete_button {
   transition: all 0.3s ease-in-out;
 }
 
-button.delete_button:hover {
-  color: #dddddd;
-  background: #b81e06;
-  border: 2px solid #dddddd;
-}
-
 button.edit-project-button {
   font-family: "Roboto Bold", sans-serif;
   margin-top: 2em;
@@ -90,16 +100,81 @@ button.edit-project-button:hover {
 
 div.buttons_duo {
   display: flex;
-
   gap: 1em;
+}
+
+/* div:where(.swal2-icon).swal2-warning {
+  border-color: aqua;
+  color: aqua;
+} */
+
+/* Styles du carrousel */
+.project_images_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden; /* Cache les images qui ne sont pas visibles */
+  width: 100%; /* Occupe toute la largeur du container */
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s ease-in-out; /* Animation pour le défilement */
+}
+
+.carousel_button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #113f59;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.carousel_button:first-child {
+  left: 0px;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel_button:last-child {
+  right: 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img#next_icon {
+  width: 30px;
+  transform: scaleX(-1);
+  background-color: #dbc788;
+  border-radius: 50%;
+}
+
+img#previous_icon {
+  width: 30px;
+
+  background-color: #dbc788;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 @media screen and (min-width: 768px) {
   section.project_details {
     text-align: left;
   }
+
   section.details-card {
-    border-radius: 3% 3%;
     margin-right: 5em;
     margin-left: 5em;
     padding-right: 3em;
@@ -110,11 +185,18 @@ div.buttons_duo {
   }
 
   h1.details_title {
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
     font-size: 2.5em;
   }
 
-  button.delete_button {
-    margin-bottom: 1.5em;
+  img.project_picture_details {
+    width: 50%; /* Pour les écrans plus larges, garde une taille relative */
+    height: 450px;
+    width: 100%; /* Maintient la hauteur constante */
+  }
+
+  .carousel_button {
+    font-size: 3rem;
   }
 }

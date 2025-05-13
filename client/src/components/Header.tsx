@@ -29,6 +29,18 @@ function Header() {
     };
   }, [isOpen]);
 
+  // Ferme le menu si on redimensionne au-dessus de 768px
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isOpen]);
+
   return (
     <header id="header">
       <section id="logo_name">
@@ -68,7 +80,7 @@ function Header() {
               onClick={toggleMenu}
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              Expérience
+              Profil
             </NavLink>
           </li>
           <li>

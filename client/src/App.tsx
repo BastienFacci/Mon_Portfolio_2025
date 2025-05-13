@@ -1,20 +1,20 @@
 import { Outlet } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
-
 function App() {
   return (
-    <>
-      <ToastContainer />
+    <div className="app-wrapper">
       <header>
         <Header />
       </header>
-      <main>
+      <main className="main-content">
         <Outlet />
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }
 
