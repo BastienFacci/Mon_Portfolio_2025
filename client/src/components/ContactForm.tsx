@@ -147,9 +147,6 @@ function ContactForm({ children, defaultValue, onSubmit }: NextContactType) {
           />
         </a>
       </div>
-      {/* <div className="triceratops-div">
-        <img src={Triceratops} alt="Triceratops" id="triceratops" />
-      </div> */}
     </section>
   );
 }

@@ -15,10 +15,16 @@
 
 /* CONTAINER PRINCIPAL (Formulaire de Contact) */
 .contact-form-container {
-  padding-top: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centrer verticalement */
+  align-items: center; /* centrer horizontalement */
   background-color: #d4e0cc;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 0; /* supprime le padding-top qui casse le centrage */
+  padding-top: 115px;
+  box-sizing: border-box;
 }
 
 /* TITRE */
@@ -160,7 +166,6 @@ img#triceratops {
 /* RESPONSIVE DESIGN */
 @media screen and (min-width: 768px) {
   .contact-form-container {
-    padding-top: 10%;
     background-color: #d4e0cc;
   }
 
@@ -181,10 +186,5 @@ img#triceratops {
   .triceratops-div {
     text-align: right;
     margin-right: 1.5em;
-  }
-
-  img#triceratops {
-    margin-top: -26em;
-    margin-bottom: 8em;
   }
 }
