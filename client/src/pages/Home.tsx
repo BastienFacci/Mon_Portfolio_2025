@@ -1,12 +1,19 @@
 import "./Home.css";
 import { Link } from "react-router-dom";
-import Portrait from "../assets/images/profile_picture.png";
+import Portrait from "../assets/images/profile_picture.webp";
 
 function Home() {
   return (
     <section className="home_container">
       <div className="portrait_description">
-        <img src={Portrait} alt="Portrait" id="portrait" />
+        <img
+          src={Portrait}
+          alt="Portrait"
+          id="portrait"
+          width={200}
+          loading="lazy"
+          decoding="async"
+        />
 
         <div className="desciption_container">
           <h1 id="my_name">Bastien Faccinetto</h1>

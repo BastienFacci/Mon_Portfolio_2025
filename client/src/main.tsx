@@ -10,11 +10,10 @@ import App from "./App";
 import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
 import Home from "./pages/Home";
-import ProjectDelete from "./pages/projectPages/ProjectDelete";
+
 import ProjectDetails from "./pages/projectPages/ProjectDetails";
-import ProjectEdit from "./pages/projectPages/ProjectEdit";
+
 import ProjectIndex from "./pages/projectPages/ProjectIndex";
-import ProjectNew from "./pages/projectPages/ProjectNew";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -47,19 +46,7 @@ const router = createBrowserRouter([
         path: "project/:id",
         element: <ProjectDetails />,
       },
-      {
-        path: "add_project",
-        element: <ProjectNew />,
-      },
-      {
-        path: "delete_project",
-        // biome-ignore lint/correctness/noChildrenProp: <explanation>
-        element: <ProjectDelete id={0} title={""} children={undefined} />,
-      },
-      {
-        path: "edit_project/:id",
-        element: <ProjectEdit />,
-      },
+
       {
         path: "contact",
         element: <Contact />,

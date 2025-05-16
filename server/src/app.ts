@@ -1,9 +1,9 @@
 // Load the express module to create a web application
-
+import compression from "compression";
 import express from "express";
 
 const app = express();
-
+app.use(compression());
 // Configure it
 
 /* ************************************************************************* */

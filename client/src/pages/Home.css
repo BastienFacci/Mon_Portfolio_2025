@@ -53,7 +53,7 @@ div.presentation {
 }
 
 div.portrait_description {
-  padding-top: 15%;
+  padding-top: 20%;
 }
 
 .description_bold {
@@ -106,11 +106,12 @@ button#more_infos:hover {
 
   div.portrait_description {
     display: flex;
-    padding-top: 12%;
+    padding-top: 5%;
     text-align: left;
     align-items: center;
     margin-left: 2em;
     margin-right: 6em;
+    min-height: 100vh;
   }
 
   div.presentation {
